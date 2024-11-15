@@ -6,6 +6,10 @@
  */
 #include "global.h"
 
-int status1 = 0;
-int status2 = 0;
-int counter = 0;
+int status = 0;
+int value = 0;
+int value1 = 0;
+
+int TIME_RED = 5000;
+int TIME_YELLOW = 2000;
+int TIME_GREEN = 3000;

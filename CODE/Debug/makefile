@@ -52,6 +52,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 LAB03.list \
 
+OBJCOPY_HEX += \
+LAB03.hex \
+
+OBJCOPY_BIN += \
+LAB03.bin \
+
 
 # All Target
 all: main-build
@@ -60,8 +66,8 @@ all: main-build
 main-build: LAB03.elf secondary-outputs
 
 # Tool invocations
-LAB03.elf LAB03.map: $(OBJS) $(USER_OBJS) fail-specified-linker-script-missing makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LAB03.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 --specs=nosys.specs -Wl,-Map="LAB03.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB03.elf LAB03.map: $(OBJS) $(USER_OBJS) C:\ST\STM32CubeIDE_1.16.1\LAB03\CODE\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LAB03.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\ST\STM32CubeIDE_1.16.1\LAB03\CODE\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB03.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -75,12 +81,22 @@ LAB03.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+LAB03.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "LAB03.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+LAB03.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "LAB03.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) LAB03.elf LAB03.list LAB03.map default.size.stdout
+	-$(RM) LAB03.bin LAB03.elf LAB03.hex LAB03.list LAB03.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

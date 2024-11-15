@@ -10,45 +10,29 @@
 
 #include "main.h"
 #include "software_timer.h"
+#include "led7_segment.h"
 #include "button.h"
 
-#define INIT 			1
+#define INIT		1
+#define RED_GREEN	2
+#define RED_YELLOW	3
+#define GREEN_RED	4
+#define YELLOW_RED	5
+#define MOD_RED		6
+#define MOD_AMBER	7
+#define MOD_GREEN	8
 
-#define AUTO_RED 		2
-#define AUTO_YELLOW 	3
-#define AUTO_GREEN 		4
+#define MAN_RED		16
+#define MAN_GREEN	17
+#define MAN_YELLOW	18
 
-#define AUTO_LED7_0 	10
-#define AUTO_LED7_1 	11
-#define AUTO_LED7_2 	12
-#define AUTO_LED7_3 	13
-#define AUTO_LED7_4 	14
-#define AUTO_LED7_5 	15
-#define AUTO_LED7_6 	16
-#define AUTO_LED7_7 	17
-#define AUTO_LED7_8 	18
-#define AUTO_LED7_9 	19
-
-#define TurnOnLed		20
-#define TurnOffLed		21
-
-#define MAN_LED7_0		30
-#define MAN_LED7_1		31
-#define MAN_LED7_2		32
-#define MAN_LED7_3		33
-#define MAN_LED7_4		34
-#define MAN_LED7_5		35
-#define MAN_LED7_6		36
-#define MAN_LED7_7		37
-#define MAN_LED7_8		38
-#define MAN_LED7_9		39
-
-extern int status1;
-extern int status2;
-extern int counter;
+extern int status;
+extern int value;
+extern int value1;
+extern int TIME_RED;
+extern int TIME_YELLOW;
+extern int TIME_GREEN;
+extern int index_led;
 
 #endif /* INC_GLOBAL_H_ */
-
-
-
 
