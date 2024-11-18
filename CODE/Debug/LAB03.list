@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00016b8e  00000000  00000000  0000f19f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000bac2  00000000  00000000  00025d2d  2**0
+ 17 .debug_line   0000bac0  00000000  00000000  00025d2d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082526  00000000  00000000  000317ef  2**0
+ 18 .debug_str    00082527  00000000  00000000  000317ed  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000b3d15  2**0
+ 19 .comment      00000043  00000000  00000000  000b3d14  2**0
                   CONTENTS, READONLY
  20 .debug_frame  000027d4  00000000  00000000  000b3d58  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -2042,7 +2042,7 @@ void setTimer(int index, int value) {
  8000e7e:	683b      	ldr	r3, [r7, #0]
  8000e80:	4a09      	ldr	r2, [pc, #36]	@ (8000ea8 <setTimer+0x34>)
  8000e82:	fb82 1203 	smull	r1, r2, r2, r3
- 8000e86:	1052      	asrs	r2, r2, #1
+ 8000e86:	1092      	asrs	r2, r2, #2
  8000e88:	17db      	asrs	r3, r3, #31
  8000e8a:	1ad2      	subs	r2, r2, r3
  8000e8c:	4907      	ldr	r1, [pc, #28]	@ (8000eac <setTimer+0x38>)

@@ -9,7 +9,7 @@
 #define INC_SOFTWARE_TIMER_H_
 
 #define MAX_COUNTER 11
-#define TIMER_TICK 5
+#define TIMER_TICK 10
 
 extern int timer_counter[MAX_COUNTER];
 

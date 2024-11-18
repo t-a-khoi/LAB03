@@ -1,9 +1,3 @@
-/*
- * fsm_traffic_light.c
- *
- *  Created on: Nov 1, 2024
- *      Author: ADMIN
- */
 #include "fsm_traffic_light.h"
 
 int TIME_RED_tmp = 0;
